@@ -1,4 +1,6 @@
-<?php ob_start(); ?>
+<?php
+ob_start();
+?>
 <div class="app-root">
     <header class="topbar">
         <div class="brand">Class-ify</div>
@@ -10,6 +12,7 @@
         <div class="top-actions">
             <button class="action-btn">+ Join class</button>
             <div class="profile-badge">A</div>
+            <span id="user-role" class="role-label"></span>
             <button id="logout-btn" class="logout-btn">Sign out</button>
         </div>
     </header>
@@ -118,5 +121,7 @@
     </div>
 </div>
 
-<?php $out1 = ob_get_clean();
-require "views/layout.php"; ?>
+<?php
+$out1 = ob_get_clean();
+require "views/layout.php";
+?>

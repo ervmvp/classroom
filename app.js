@@ -20,22 +20,33 @@ function logout() {
     window.location.href = 'login.php';
 }
 
+function showProtectedContent() {
+    const root = document.querySelector('.app-root');
+    if (root) {
+        root.style.visibility = 'visible';
+    }
+}
+
 function handleLoginForm(event) {
     event.preventDefault();
     const emailInput = document.getElementById('login-email');
     const passwordInput = document.getElementById('login-password');
+    const roleInput = document.getElementById('login-role');
     const email = emailInput?.value.trim();
     const password = passwordInput?.value;
+    const role = roleInput?.value || 'student';
 
     if (!email || !password) {
         alert('Please enter both email and password.');
         return;
     }
 
-    const username = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '') || 'Student';
+    const username = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '') || 'student';
     const user = {
         email,
         name: username.charAt(0).toUpperCase() + username.slice(1),
+        role,
+        createdAt: new Date().toISOString(),
     };
 
     saveUser(user);
@@ -66,6 +77,7 @@ function installPageProtection() {
 
     const profileBadge = document.querySelector('.profile-badge');
     const welcomeEyebrow = document.querySelector('.eyebrow');
+    const roleLabel = document.getElementById('user-role');
     const logoutButton = document.getElementById('logout-btn');
 
     if (profileBadge) {
@@ -76,10 +88,16 @@ function installPageProtection() {
         welcomeEyebrow.textContent = `Welcome back, ${user.name}`;
     }
 
+    if (roleLabel) {
+        roleLabel.textContent = user.role?.charAt(0).toUpperCase() + user.role.slice(1);
+    }
+
     if (logoutButton) {
         logoutButton.style.display = 'inline-flex';
         logoutButton.addEventListener('click', logout);
     }
+
+    showProtectedContent();
 }
 
 document.addEventListener('DOMContentLoaded', installPageProtection);
