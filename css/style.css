@@ -18,13 +18,10 @@ html, body {
     min-height: 100%;
     background: var(--dark_green);
     color: var(--white);
-}
-
-body {
     margin: 0;
     line-height: 1.5;
-    color: var(--black);
 }
+
 
 a {
     color: inherit;
@@ -39,7 +36,7 @@ button {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: var(--lighter_green);
+    background: var(--dark_green);
     visibility: hidden;
 }
 
@@ -49,7 +46,7 @@ button {
     justify-content: space-between;
     padding: 18px 32px;
     gap: 22px;
-    background: var(--white);
+    background: var(--darker_green);
     box-shadow: 0 1px 2px rgba(60, 64, 67, 0.12);
 }
 
@@ -159,7 +156,7 @@ nav {
 .sidebar-divider {
     margin: 26px 0;
     height: 1px;
-    background: var(--lighter_green);
+    background: var(--dark_green);
 }
 
 .sidebar-title {
@@ -183,7 +180,7 @@ nav {
 }
 
 .class-link:hover {
-    background: var(--lighter_green);
+    background: var(--dark_green);
 }
 
 .dot {
@@ -265,7 +262,7 @@ nav {
 }
 
 .class-card {
-    background: #ffffff;
+    background: var(--darker_green);
     border-radius: 22px;
     padding: 24px;
     display: flex;
@@ -273,6 +270,7 @@ nav {
     justify-content: space-between;
     min-height: 210px;
     box-shadow: 0 1px 4px rgba(60, 64, 67, 0.12);
+    color: var(--white);
 }
 
 .class-chip {
@@ -330,7 +328,7 @@ nav {
 }
 
 .panel {
-    background: #ffffff;
+    background: var(--darker_green);
     border-radius: 24px;
     padding: 24px;
     box-shadow: 0 1px 4px rgba(60, 64, 67, 0.12);
@@ -347,7 +345,7 @@ nav {
     border-radius: 18px;
     padding: 18px;
     margin-bottom: 14px;
-    background: #f1f3f4;
+    background: var(--dark_green);
 }
 
 .announcement:last-child,
@@ -541,7 +539,7 @@ nav {
 }
 
 .meta {
-    color: #5f6368;
+    color: var(--white);
     font-size: 0.95rem;
     margin-top: 6px;
 }
