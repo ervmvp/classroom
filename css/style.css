@@ -1,11 +1,12 @@
 :root {
     color-scheme: light;
     --white: #ffffff;
-    --lighter_green: #e1efd7;
-    --light_green: #adffb3;
+    --lighter_green: #7dad80;
+    --light_green: #96d29a;
     --black: #000000;
     --darker_green: #193b00;
     --dark_green: #006407;
+    --panels:#004d17;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -65,7 +66,8 @@ button {
 .top-button {
     border: none;
     background: transparent;
-    color: #5f6368;
+    color: var(--white);
+    opacity: 0.5;
     padding: 10px 16px;
     border-radius: 999px;
     cursor: pointer;
@@ -74,8 +76,9 @@ button {
 
 .top-button:hover,
 .top-button.active {
-    background: #e8f0fe;
-    color: #1a73e8;
+    background: var(--light_green);
+    color: var(--dark_green);
+    opacity: 1;
 }
 
 .top-actions {
@@ -87,8 +90,8 @@ button {
 .action-btn {
     border: none;
     border-radius: 999px;
-    background: #1a73e8;
-    color: #ffffff;
+    background: var(--light_green);
+    color: var(--dark_green);
     padding: 12px 18px;
     cursor: pointer;
     font-weight: 700;
@@ -99,8 +102,8 @@ button {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #1a73e8;
-    color: #ffffff;
+    background: var(--light_green);
+    color: var(--dark_green);
     display: grid;
     place-items: center;
     font-weight: 700;
@@ -117,7 +120,7 @@ button {
 }
 
 .sidebar {
-    background: var(--darker_green);
+    background: var(--panels);
     border-radius: 24px;
     padding: 24px;
     box-shadow: 0 1px 4px rgba(60, 64, 67, 0.12);
@@ -141,16 +144,18 @@ nav {
 
 .nav-link {
     text-decoration: none;
-    color: var(--black);
+    color: var(--white);
     padding: 12px 16px;
     border-radius: 14px;
     font-weight: 500;
+    background-color: var(--darker_green);
 }
 
 .nav-link:hover,
 .nav-link.active {
     background: var(--lighter_green);
-    color: var(--black);
+    color: var(--darker_green);
+    font-weight: 750;
 }
 
 .sidebar-divider {
@@ -163,8 +168,9 @@ nav {
     text-transform: uppercase;
     letter-spacing: 0.12em;
     font-size: 0.72rem;
-    color: #5f6368;
+    color: var(--white);
     margin-bottom: 16px;
+    opacity: 0.5;
 }
 
 .class-link {
@@ -172,7 +178,7 @@ nav {
     align-items: center;
     gap: 10px;
     text-decoration: none;
-    color: var(--black);
+    color: var(--white);
     padding: 10px 12px;
     border-radius: 14px;
     font-weight: 500;
@@ -216,7 +222,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     gap: 24px;
-    background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+    background: var(--light_green);
     color: #ffffff;
     border-radius: 24px;
     padding: 32px;
@@ -245,8 +251,8 @@ nav {
 
 .join-btn {
     border: none;
-    background: #ffffff;
-    color: #1a73e8;
+    background: #afeeb3;
+    color: var(--dark_green);
     padding: 14px 24px;
     border-radius: 999px;
     font-size: 0.95rem;
@@ -262,7 +268,7 @@ nav {
 }
 
 .class-card {
-    background: var(--darker_green);
+    background: var(--panels);
     border-radius: 22px;
     padding: 24px;
     display: flex;
@@ -310,15 +316,16 @@ nav {
 
 .class-card p {
     margin: 0 0 18px;
-    color: #5f6368;
+    color: #fff;
 }
 
 .card-footer {
     display: flex;
     justify-content: space-between;
     gap: 12px;
-    color: #3c4043;
+    color: #fff;
     font-size: 0.95rem;
+    
 }
 
 .dashboard {
@@ -328,7 +335,7 @@ nav {
 }
 
 .panel {
-    background: var(--darker_green);
+    background: var(--panels);
     border-radius: 24px;
     padding: 24px;
     box-shadow: 0 1px 4px rgba(60, 64, 67, 0.12);
@@ -345,7 +352,8 @@ nav {
     border-radius: 18px;
     padding: 18px;
     margin-bottom: 14px;
-    background: var(--dark_green);
+    background: var(--darker_green);
+    opacity: 0.9;
 }
 
 .announcement:last-child,
@@ -519,8 +527,8 @@ nav {
 .logout-btn {
     display: none;
     border: none;
-    background: #e8f0fe;
-    color: #1a73e8;
+    background:var(--lighter_green);
+    color: var(--dark_green);
     padding: 12px 18px;
     border-radius: 999px;
     cursor: pointer;
@@ -542,6 +550,7 @@ nav {
     color: var(--white);
     font-size: 0.95rem;
     margin-top: 6px;
+    opacity: 1;
 }
 
 @media (max-width: 1080px) {
