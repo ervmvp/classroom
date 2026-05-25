@@ -61,14 +61,14 @@ ob_start();
                 <article class="class-card">
                     <span class="class-chip class-chip-blue">Science</span>
                     <h2>Physics 11</h2>
-                    <p>Mr. Rivera · 34 students</p>
+                    <p>Ms. Klimpa · 34 students</p>
                     <div class="card-footer">Next due: Lab report — Fri</div>
                 </article>
 
                 <article class="class-card">
                     <span class="class-chip class-chip-green">Humanities</span>
                     <h2>World History</h2>
-                    <p>Ms. Harper · 28 students</p>
+                    <p> Dr. Phill · 28 students</p>
                     <div class="card-footer">Upcoming: Essay draft — Wed</div>
                 </article>
 
@@ -82,7 +82,7 @@ ob_start();
                 <article class="class-card">
                     <span class="class-chip class-chip-yellow">Creative</span>
                     <h2>Art & Design</h2>
-                    <p>Mrs. Jones · 19 students</p>
+                    <p>Mr. Iesmins · 19 students</p>
                     <div class="card-footer">Materials due: Monday</div>
                 </article>
             </section>

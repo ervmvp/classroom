@@ -1,141 +1,108 @@
+
 <?php
-ob_start();
+include "calendar/calendar.php";
 ?>
-<div class="app-root">
-    <header class="topbar">
-        <div class="brand">Class-ify</div>
-        <div class="topbar-center">
-            <a class="top-button" href="index.php">Classes</a>
-            <a class="top-button active" href="calendar.php">Calendar</a>
-            <button class="top-button">To-do</button>
-        </div>
-        <div class="top-actions">
-            <button class="action-btn">+ Add event</button>
-            <div class="profile-badge">A</div>
-            <span id="user-role" class="role-label"></span>
-            <button id="logout-btn" class="logout-btn">Sign out</button>
-        </div>
-    </header>
 
-    <div class="app-shell">
-        <aside class="sidebar">
-            <div class="sidebar-brand">Navigation</div>
-            <nav>
-                <a class="nav-link" href="index.php">Classes</a>
-                <a class="nav-link" href="#">Assignments</a>
-                <a class="nav-link" href="#">People</a>
-                <a class="nav-link active" href="calendar.php">Calendar</a>
-            </nav>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-            <div class="sidebar-divider"></div>
-            <div class="sidebar-title">Your classes</div>
-            <a class="class-link" href="#">
-                <span class="dot dot-blue"></span>
-                Biology 101
-            </a>
-            <a class="class-link" href="#">
-                <span class="dot dot-green"></span>
-                World History
-            </a>
-            <a class="class-link" href="#">
-                <span class="dot dot-red"></span>
-                Chemistry Lab
-            </a>
-            <a class="class-link" href="#">
-                <span class="dot dot-yellow"></span>
-                Art & Design
-            </a>
-        </aside>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendar Project</title>
+  <meta name="description" content="My Own Calendar Project">
 
-        <main class="main-content">
-            <section class="hero">
-                <div>
-                    <p class="eyebrow">Calendar view</p>
-                    <h1>Class schedule at a glance</h1>
-                    <p>See scheduled lessons, assignments, and school events for the month in one clean calendar.</p>
-                </div>
-                <button class="join-btn">Today</button>
-            </section>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/calendar.css" />
+</head>
 
-            <section class="calendar-panel">
-                <div class="calendar-header">
-                    <div>
-                        <p class="eyebrow">May 2026</p>
-                        <h2>May classes & events</h2>
-                    </div>
-                    <div class="calendar-controls">
-                        <button class="top-button">Prev</button>
-                        <button class="top-button active">Next</button>
-                    </div>
-                </div>
+<body>
 
-                <div class="calendar-grid">
-                    <div class="calendar-day header">Sun</div>
-                    <div class="calendar-day header">Mon</div>
-                    <div class="calendar-day header">Tue</div>
-                    <div class="calendar-day header">Wed</div>
-                    <div class="calendar-day header">Thu</div>
-                    <div class="calendar-day header">Fri</div>
-                    <div class="calendar-day header">Sat</div>
+  <!-- ✅ Success / Error Messages -->
+  <?php if ($successMsg): ?>
+    <div class="alert success"><?= $successMsg ?></div>
+  <?php elseif ($errorMsg): ?>
+    <div class="alert error"><?= $errorMsg ?></div>
+  <?php endif; ?>
 
-                    <div class="calendar-day empty"></div>
-                    <div class="calendar-day empty"></div>
-                    <div class="calendar-day empty"></div>
-                    <div class="calendar-day">1</div>
-                    <div class="calendar-day">2</div>
-                    <div class="calendar-day">3</div>
-                    <div class="calendar-day">4</div>
+  <!-- ⏰ Clock -->
+  <div class="clock-container">
+    <div id="clock"></div>
+  </div>
 
-                    <div class="calendar-day">5</div>
-                    <div class="calendar-day event-day">
-                        <span class="date-number">6</span>
-                        <div class="event-pill blue">History review</div>
-                    </div>
-                    <div class="calendar-day">7</div>
-                    <div class="calendar-day event-day">
-                        <span class="date-number">8</span>
-                        <div class="event-pill green">Chemistry lab</div>
-                    </div>
-                    <div class="calendar-day">9</div>
-                    <div class="calendar-day">10</div>
-                    <div class="calendar-day">11</div>
-
-                    <div class="calendar-day">12</div>
-                    <div class="calendar-day">13</div>
-                    <div class="calendar-day event-day">
-                        <span class="date-number">14</span>
-                        <div class="event-pill yellow">Art project</div>
-                    </div>
-                    <div class="calendar-day">15</div>
-                    <div class="calendar-day">16</div>
-                    <div class="calendar-day event-day">
-                        <span class="date-number">17</span>
-                        <div class="event-pill red">Biology quiz</div>
-                    </div>
-                    <div class="calendar-day">18</div>
-
-                    <div class="calendar-day">19</div>
-                    <div class="calendar-day">20</div>
-                    <div class="calendar-day">21</div>
-                    <div class="calendar-day">22</div>
-                    <div class="calendar-day">23</div>
-                    <div class="calendar-day">24</div>
-                    <div class="calendar-day">25</div>
-
-                    <div class="calendar-day">26</div>
-                    <div class="calendar-day">27</div>
-                    <div class="calendar-day">28</div>
-                    <div class="calendar-day">29</div>
-                    <div class="calendar-day">30</div>
-                    <div class="calendar-day">31</div>
-                    <div class="calendar-day empty"></div>
-                </div>
-            </section>
-        </main>
+  <!-- 📅 Calendar -->
+  <div class="calendar">
+    <div class="nav-btn-container">
+      <button onclick="changeMonth(-1)" class="nav-btn">⏮️</button>
+      <h2 id="monthYear" style="margin: 0"></h2>
+      <button onclick="changeMonth(1)" class="nav-btn">⏭️</button>
     </div>
-</div>
 
-<?php
-$out1 = ob_get_clean();
-require "views/layout.php";
-?>
+    <div class="calendar-grid" id="calendar"></div>
+  </div>
+
+  <!-- 📌 Modal -->
+  <div class="modal" id="eventModal">
+    <div class="modal-content">
+
+      <!-- Dropdown Selector -->
+      <div id="eventSelectorWrapper" style="display: none;">
+        <label for="eventSelector"><strong>Select Event:</strong></label>
+        <select id="eventSelector" onchange="handleEventSelection(this.value)">
+          <option disabled selected>Choose Event...</option>
+        </select>
+      </div>
+
+      <!-- 📝 Form -->
+      <form method="POST" id="eventForm">
+        <input type="hidden" name="action" id="formAction" value="add">
+        <input type="hidden" name="event_id" id="eventId">
+
+        <label for="courseName">Course Title:</label>
+        <input type="text" name="course_name" id="courseName" required>
+
+        <label for="instructorName">Instructor Name:</label>
+        <input type="text" name="instructor_name" id="instructorName" required>
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" name="start_date" id="startDate" required>
+
+        <label for="endDate">End Date:</label>
+        <input type="date" name="end_date" id="endDate" required>
+
+        <label for="startTime">Start Time:</label>
+        <input type="time" name="start_time" id="startTime" required>
+
+        <label for="endTime">End Time:</label>
+        <input type="time" name="end_time" id="endTime" required>
+
+        <button type="submit">💾 Save</button>
+      </form>
+
+      <!-- 🗑️ Delete -->
+      <form method="POST" onsubmit="return confirm('Are you sure you want to delete this appointment?')">
+        <input type="hidden" name="action" value="delete">
+        <input type="hidden" name="event_id" id="deleteEventId">
+        <button type="submit" class="submit-btn">🗑️ Delete</button>
+      </form>
+
+      <!-- ❌ Cancel -->
+      <button type="button" class="submit-btn" onclick="closeModal()" style="background:#ccc">❌ Cancel</button>
+    </div>
+  </div>
+
+  <!-- 🔽 Events JSON from PHP -->
+
+
+  <!-- 📜 Calendar Logic -->
+
+
+  <script>
+    const events = <?= json_encode($eventsFromDB, JSON_UNESCAPED_UNICODE); ?>;
+  </script>
+
+  <script src="calendar/calendar.js"></script>
+
+</body>
+
+</html>
