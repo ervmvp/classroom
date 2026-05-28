@@ -33,9 +33,9 @@ include "calendar/calendar.php";
   <!-- 📅 Calendar -->
   <div class="calendar">
     <div class="nav-btn-container">
-      <button onclick="changeMonth(-1)" class="nav-btn">⏮️</button>
+      <button onclick="changeMonth(-1)" class="nav-btn"><img src="https://logos-world.net/wp-content/uploads/2023/07/Green-Arrow-Symbol.png" class="leftbutton"></button>
       <h2 id="monthYear" style="margin: 0"></h2>
-      <button onclick="changeMonth(1)" class="nav-btn">⏭️</button>
+      <button onclick="changeMonth(1)" class="nav-btn"><img src="https://logos-world.net/wp-content/uploads/2023/07/Green-Arrow-Symbol.png"class="rightbutton"></button>
     </div>
 
     <div class="calendar-grid" id="calendar"></div>
